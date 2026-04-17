@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Weather Analytics Dashboard</h2>
+<p>Select a chart page to view detailed weather analytics.</p>
+
+<section class="chart-page-grid">
+    <a class="chart-page-card" href="{{ url_for('main.temperature_dashboard') }}">
+        <h3>Temperature Chart</h3>
+        <p>Track temperature change across recorded timestamps.</p>
+    </a>
+    <a class="chart-page-card" href="{{ url_for('main.humidity_dashboard') }}">
+        <h3>Humidity Chart</h3>
+        <p>Analyze humidity history and identify moisture trends.</p>
+    </a>
+    <a class="chart-page-card" href="{{ url_for('main.wind_dashboard') }}">
+        <h3>Wind Speed Chart</h3>
+        <p>Monitor wind speed variation over time.</p>
+    </a>
+</section>
+{% endblock %}

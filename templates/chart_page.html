@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{{ chart_title }}</h2>
+<p>Use filters to load records and visualize this metric.</p>
+
+<div class="dashboard-controls">
+    <label for="city-select">City</label>
+    <select id="city-select">
+        <option value="">All Cities</option>
+        {% for city in cities %}
+        <option value="{{ city.name }}">{{ city.name }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="limit-select">Records</label>
+    <select id="limit-select">
+        <option value="20">20</option>
+        <option value="40">40</option>
+        <option value="60">60</option>
+        <option value="100">100</option>
+    </select>
+
+    <button id="refresh-chart" type="button">Refresh Chart</button>
+</div>
+
+<div id="chart-message" class="dashboard-message"></div>
+
+<section class="chart-grid single-chart-grid">
+    <div class="chart-card chart-card-wide">
+        <h3>{{ chart_label }}</h3>
+        <canvas id="metric-chart"></canvas>
+    </div>
+</section>
+
+<div
+    id="chart-config"
+    data-metric="{{ chart_metric }}"
+    data-label="{{ chart_label }}"
+    data-color="{{ chart_color }}">
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/chart_page.js') }}"></script>
+{% endblock %}

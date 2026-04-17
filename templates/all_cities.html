@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>All Cities Real-Time Weather</h2>
+<p>View the latest weather data for saved cities plus a default India city list.</p>
+
+<div class="dashboard-controls">
+    <button id="refresh-all-cities" type="button">Refresh All Cities</button>
+</div>
+
+<div id="all-cities-message" class="dashboard-message"></div>
+
+<div class="table-wrapper">
+    <table class="weather-table">
+        <thead>
+            <tr>
+                <th>City</th>
+                <th>Temperature (°C)</th>
+                <th>Humidity (%)</th>
+                <th>Wind (m/s)</th>
+                <th>Updated At</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="all-cities-body">
+            <tr>
+                <td colspan="6">Loading city data...</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/all_cities.js') }}"></script>
+{% endblock %}
